@@ -4,7 +4,8 @@ metadata:
   name: allow-frontend
 spec:
   podSelector:
-    name: backend
+    matchLabels:
+      name: backend
   ingress:
     - from:
         - podSelector:
