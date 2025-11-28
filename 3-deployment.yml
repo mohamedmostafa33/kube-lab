@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      nodeSelector:
+        disk: ssd
+      tolerations:
+        - key: "critical"
+          operator: "="
+          effect: "NoSchedule"
+      containers:
+        - name: api
+          image: nginx
+          readinessProbe:
+            httpGet:
+              path: /check
+              port: 80

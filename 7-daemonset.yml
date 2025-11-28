@@ -1,0 +1,17 @@
+apiVersion: apps/v2
+kind: DaemonSet
+metadata:
+  name: log-agent
+spec:
+  selector:
+    matchLabels:
+      app: logger
+  template:
+    metadata:
+      labels:
+        app: logger
+    spec:
+      containers:
+        - name: agent
+          image: busybox
+          command: ["sh","-c","tail -f /var/log/messages"]

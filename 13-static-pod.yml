@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: node-monitor
+spec:
+  containers:
+    - name: mon
+      image: busybox
+      command: ["sh","-c","echo ok"]
+      volumeMounts:
+        - name: host
+          mountPath: /host
+  volumes:
+    - name: host
+      hostpath:
+        path: /
