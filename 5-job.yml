@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migrate
+spec:
+  template:
+    spec:
+      initContainers:
+        - name: check
+          image: busybox
+          command: ["sh","-c","echo checking..."]
+      containers:
+        - name: run
+          image: alpine
+          command: ["sh","-c","echo done"]
+      restartPolicies: Never

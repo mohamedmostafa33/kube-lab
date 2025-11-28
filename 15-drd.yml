@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drd-api
+spec:
+  strategy:
+    type: OnShot
+  replicas: 3
+  selector:
+    matchLabels:
+      app: drd
+  template:
+    metadata:
+      labels:
+        app: drd
+    spec:
+      containers:
+        - name: api
+          image: nginx
