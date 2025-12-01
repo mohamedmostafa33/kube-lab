@@ -17,4 +17,3 @@ spec:
       image: nginx
 #run ---->>
 #kubectl taint nodes <node-name> role=logging:NoSchedule
-

@@ -20,4 +20,3 @@ spec:
       volumes:
         - name: varlog
           hostPath:
-
